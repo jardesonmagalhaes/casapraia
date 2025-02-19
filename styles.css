@@ -1,0 +1,351 @@
+/* Estilos gerais */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('C:/Users/jarde/OneDrive/Área de Trabalho/casapraia/imagens/casadepraiafundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+header {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Seção inicial */
+
+#categorias-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+#abrir-seletor-cidade {
+    background-color: transparent;
+    border: 3px solid #000;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 7px;
+}
+
+#abrir-seletor-cidade:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* Container das casas */
+
+#casas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+/* Cartão de cada casa */
+
+.casa-card {
+    width: 300px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.casa-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.casa-card h3 {
+    margin-top: 10px;
+}
+
+.casa-card p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.saiba-mais {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: auto;
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+
+/* Modal geral */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Conteúdo do modal */
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Botão fechar */
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+
+/* Descrição do modal */
+
+#modal-description {
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+/* Imagem do modal */
+
+#modal-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+
+/* Botão de contato (WhatsApp) */
+
+.botao-contato {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #25D366;
+    /* Verde do WhatsApp */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.botao-contato:hover {
+    background-color: #1DA851;
+}
+
+.botao-contato i {
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+
+/* Modal de seleção de cidade */
+
+#modal-cidade .modal-content {
+    width: 300px;
+    max-width: 90%;
+    text-align: center;
+}
+
+#modal-cidade .modal-content a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+#modal-cidade .modal-content a:hover {
+    background-color: #f0f0f0;
+}
+
+.promocoes {
+    text-align: center;
+    margin: 30px auto;
+    padding: 30px 15px;
+    background: linear-gradient(to right, #050a0b, #007bff);
+    color: white;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+.promocoes h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.promocoes p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.promo-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.promo-card {
+    background: white;
+    color: black;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.promo-card:hover {
+    transform: scale(1.03);
+}
+
+.promo-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.promo-info {
+    padding: 12px;
+}
+
+.promo-info h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.promo-info p {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.promo-info button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.promo-info button:hover {
+    background-color: #007bff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .promo-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .promo-card {
+        max-width: 90%;
+    }
+}
+
+.button-filtrar {
+    padding: 10px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .button-filtrar:hover {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #0056b3;
+  }
+  
+
+/* Ajuste o layout padrão para telas grandes */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Ajuste para telas menores (até 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empilha os cards em vez de lado a lado */
+        align-items: center;
+    }
+
+    .card {
+        width: 90%; /* Faz os cards ocuparem quase toda a tela */
+    }
+}
