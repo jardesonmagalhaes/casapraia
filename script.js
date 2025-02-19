@@ -80,7 +80,7 @@ casas.forEach((casa) => {
         <p>${casa.descricao}</p>
       `;
             // Ajusta o link do WhatsApp com mensagem personalizada
-            linkWhatsApp.href = `https://api.whatsapp.com/send?phone=5588998421617&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20${encodeURIComponent(
+            linkWhatsApp.href = `https://api.whatsapp.com/send?phone=5588997263753&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20${encodeURIComponent(
         casa.nome
       )}`;
         });
