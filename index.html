@@ -1,91 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casas de Praia</title>
+    <title>Casas de Praia no Ceará com Caio Ribeiro</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-
 <body>
     <header>
-        <h1>Casas de Praia com Caio Ribeiro</h1>
+        <h1>Casas de Praia para Aluguel no Ceará</h1>
     </header>
-    <section class="promocoes">
-        <h2>🔥 Promoções Especiais de Carnaval 🔥</h2>
-        <p>Aproveite ofertas exclusivas para sua próxima viagem!</p>
-    
-        <div class="promo-container">
-            <div class="promo-card">
-                <img src="imagens/casa1.jpg" alt="Casa 1 em promoção">
-                <div class="promo-info">
-                    <h3>Casa 1 - 20% OFF</h3>
-                    <p>Localizada em Morro Branco, com piscina e vista incrível. Reserve agora e garanta seu desconto!</p>
-                    <button>Reservar Agora</button>
+
+    <section class="houses">
+        <script>
+            const houses = [
+                { name: "Villa Mar Cumbuco", location: "Cumbuco, CE", price: "R$ 1.200", rating: "10 (145 avaliações)", images: ["house1.jpg", "house2.jpg", "house3.jpg"] },
+                { name: "Resort Beira-Mar", location: "Aquiraz, CE", price: "R$ 1.800", rating: "9.8 (110 avaliações)", images: ["house2.jpg", "house3.jpg", "house4.jpg"] },
+                { name: "Paraíso Morro Branco", location: "Morro Branco, CE", price: "R$ 950", rating: "9.5 (98 avaliações)", images: ["house3.jpg", "house1.jpg", "house2.jpg"] },
+                { name: "Casa de Luxo", location: "Canoa Quebrada, CE", price: "R$ 2.300", rating: "10 (80 avaliações)", images: ["house4.jpg", "house2.jpg", "house3.jpg"] },
+                { name: "Pousada Jericoacoara", location: "Jericoacoara, CE", price: "R$ 850", rating: "9.3 (123 avaliações)", images: ["house1.jpg", "house4.jpg", "house3.jpg"] },
+                { name: "Beach House", location: "Flecheiras, CE", price: "R$ 1.500", rating: "9.7 (120 avaliações)", images: ["house2.jpg", "house1.jpg", "house3.jpg"] },
+                { name: "Casa na Serra", location: "Guaramiranga, CE", price: "R$ 1.100", rating: "9.9 (90 avaliações)", images: ["house3.jpg", "house2.jpg", "house1.jpg"] },
+                { name: "Bangalô Premium", location: "Icaraí de Amontada, CE", price: "R$ 3.000", rating: "10 (55 avaliações)", images: ["house4.jpg", "house1.jpg", "house3.jpg"] },
+                { name: "Refúgio Praia das Fontes", location: "Praia das Fontes, CE", price: "R$ 720", rating: "9.6 (75 avaliações)", images: ["house1.jpg", "house3.jpg", "house2.jpg"] },
+                { name: "Villa Fortim", location: "Fortim, CE", price: "R$ 1.600", rating: "9.4 (88 avaliações)", images: ["house2.jpg", "house4.jpg", "house3.jpg"] }
+            ];
+
+            document.write(houses.map((house, index) => `
+                <div class="house" onclick="openModal(${index})">
+                    <img src="${house.images[0]}" alt="${house.name}">
+                    <div class="info">
+                        <h2>${house.name}</h2>
+                        <p><strong>Localização:</strong> ${house.location}</p>
+                        <p><strong>Preço:</strong> ${house.price} por diária</p>
+                        <p><strong>Avaliação:</strong> ${house.rating}</p>
+                    </div>
+                </div>
+            `).join(''));
+        </script>
+    </section>
+
+    <!-- Modal -->
+    <div id="houseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Casa">
+                <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="next" onclick="changeImage(1)">&#10095;</button>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalLocation"></p>
+                    <p id="modalPrice"></p>
+                    <p id="modalRating"></p>
+                    <button id="contactButton">Entrar em Contato</button>
                 </div>
             </div>
-    
-            <div class="promo-card">
-                <img src="imagens/casa2.jpg" alt="Casa 2 em promoção">
-                <div class="promo-info">
-                    <h3>Casa 2 - Fique 3 noites, pague 2!</h3>
-                    <p>Uma casa confortável e bem localizada. Perfeita para quem busca tranquilidade.</p>
-                    <button>Reservar Agora</button>
-                </div>
-            </div>
         </div>
-    </section>    
-    <main>
-        <section id="casa-selecionada">
-        </section>
-
-        <section id="informacoes-casa" style="display: none;">
-            <h2>Informações da Casa</h2>
-            <div id="descricao-casa"></div>
-            <button id="botao-contato">Entrar em Contato</button>
-        </section>
-
-        <div id="categorias-container">
-            <button class="button-filtrar">filtrar</button>
-        </div>
-
-        <div id="casas-container">
-        </div>
-
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <div id="descricao-casa">
-                    <img id="modal-image" src="" alt="">
-                    <div id="modal-description"></div>
-                </div>
-                <a href="#" id="link-whatsapp" class="botao-contato" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Entrar em Contato
-                </a>
-            </div>
-        </div>
-
-        <div id="modal-cidade" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <a href="#" data-cidade="geral">Geral</a>
-                <a href="#" data-cidade="cumbuco">Cumbuco</a>
-                <a href="#" data-cidade="morro-branco">Morro Branco</a>
-                <a href="#" data-cidade="caponga">Caponga</a>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Caio Ribeiro Casas de Praia</p>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
