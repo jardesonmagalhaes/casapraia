@@ -26,7 +26,7 @@ function changeImage(direction) {
 }
 
 function contactWhatsApp(houseName) {
-    const phoneNumber = "5588998421617";
+    const phoneNumber = "5588997263753";
     const message = `Olá, gostaria de mais informações sobre a ${houseName}`;
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
