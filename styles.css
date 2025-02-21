@@ -1,52 +1,72 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #d9d9d9;
+    background-color: #f5f5f5;
 }
 
 header {
-    background: linear-gradient(to right, #081f2f, #000000);
+    background: linear-gradient(to right, #121010, #010143);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.subtitulo {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: rgba(187, 187, 187, 0.755); /* Fundo semi-transparente */
+    border-radius: 10px; /* Borda arredondada */
+    max-width: 800px; /* Limita a largura para melhor leitura */
+    line-height: 1.6; /* Espaçamento agradável entre linhas */
+}
+
+.subtitulo p {
+    margin: 5px 0;
+}
+
+.subtitulo strong {
     font-size: 22px;
     font-weight: bold;
 }
 
+
 .houses {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
-    padding: 20px;
+    padding: 15px;
     justify-content: center;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .house {
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
 }
 
 .house:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 
 .house img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     object-fit: cover;
-    border-bottom: 2px solid #003366;
 }
 
-.info {
-    padding: 12px;
-    text-align: center;
-}
-
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -60,10 +80,10 @@ header {
 
 .modal-content {
     background-color: white;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 90%;
-    max-width: 500px;
+    max-width: 450px;
     position: relative;
     text-align: center;
     border-radius: 10px;
@@ -71,7 +91,7 @@ header {
 
 .modal img {
     width: 100%;
-    height: 250px;
+    height: 230px;
     object-fit: cover;
 }
 
@@ -83,15 +103,11 @@ header {
     cursor: pointer;
 }
 
-.modal-info {
-    margin-top: 15px;
-}
-
 button {
     background: #ff7b00;
     border: none;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 20px;
     font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
@@ -102,23 +118,142 @@ button:hover {
     background: #cc6400;
 }
 
-.prev, .next {
+/* Ajuste no espaçamento das informações nos cards */
+.info {
+    padding: 18px;
+    text-align: left; /* Mantém alinhado à esquerda */
+}
+
+.info h2 {
+    font-size: 18px;
+    margin-bottom: 12px; /* Aumentei o espaçamento abaixo do nome */
+}
+
+.info p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px; /* Adiciona espaço entre os textos */
+}
+
+/* Ajuste no modal para alinhar os detalhes à esquerda */
+/* Centraliza apenas o nome e o botão no modal */
+.modal-info {
+    margin-top: 15px;
+    padding: 0 20px;
+}
+
+.modal-info h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.modal-info p {
+    font-size: 16px;
+    color: #444;
+    text-align: left; /* Mantém alinhado à esquerda */
+    margin-bottom: -5px; /* Reduzi o espaçamento entre as linhas */
+}
+
+
+/* Centraliza o botão */
+.modal-info button {
+    display: block;
+    margin: 20px auto; /* Centraliza horizontalmente */
+}
+
+/* Mover o botão de fechar (X) para fora da imagem */
+.close {
     position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 18px;
+    cursor: pointer;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Certifica que fica na frente de tudo */
+}
+
+/* Fundo suave para as características */
+.modal-info {
+    background: #f8f8f8;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Reduzir o espaçamento inferior do modal */
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Ajuste do botão para ficar mais próximo do final */
+.modal-info button {
+    display: block;
+    margin: 15px auto 1px auto; /* Reduzi o espaçamento inferior */
+}
+
+.modal-body {
+    position: relative;
+}
+
+.prev, .next {
+    position: static;
     top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(0%);
+    background-color: rgba(255, 123, 0, 0.9);
     color: white;
     border: none;
     padding: 10px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 8%;
 }
 
 .prev {
     left: 10px;
 }
 
+/* Direita */
 .next {
     right: 10px;
+}
+
+
+/* Ajuste dos botões de navegação para garantir espaçamento */
+.prev, .next {
+    margin-top: 10px; /* Aumenta o espaço acima dos botões */
+}
+
+/* Espaço entre a última informação (avaliações) e o botão de contato */
+.modal-info p:last-of-type {
+    margin-bottom: 20px; /* Adiciona um espaçamento maior */
+}
+
+/* Ajuste do botão para manter a harmonia */
+.modal-info button {
+    margin-top: 20px; /* Mantém o botão bem espaçado da avaliação */
+}
+
+footer {
+    background: #000; /* Cor preta */
+    color: white; /* Texto branco */
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 40px;
 }
