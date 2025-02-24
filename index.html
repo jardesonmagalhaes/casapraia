@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Casas de praia exclusivas no Ceará – Cumbuco, Aquiraz, Jericoacoara e mais!">
-    <title>Casas de Praia com Caio Ribeiro</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Casas de praia exclusivas no Ceará – Cumbuco, Aquiraz, Jericoacoara e mais!">
+  <title>Casas de Praia com Caio Ribeiro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Casas de Praia com Caio Ribeiro</h1>
-    </header>
+  <header>
+    <h1>Casas de Praia com Caio Ribeiro</h1>
+  </header>
 
-    <div class="subtitulo">
-        <p>🏡 <strong>Encontre o refúgio perfeito à beira-mar!</strong> 🌊</p>
-        <p>Descubra as melhores casas de praia no Ceará e viva momentos inesquecíveis.</p>
-        <p><strong>Escolha a sua e reserve agora</strong> e fale com o nosso time ao clicar no <span class="whatsapp">WhatsApp!</span></p>
-    </div>
-    
+  <div class="subtitulo">
+    <p>🏡 <strong>Encontre o refúgio perfeito à beira-mar!</strong> 🌊</p>
+    <p>Descubra as melhores casas de praia no Ceará e viva momentos inesquecíveis.</p>
+    <p><strong>Escolha a sua e reserve agora</strong> e fale com o nosso time ao clicar no <span class="whatsapp">WhatsApp!</span></p>
+  </div>
 
-    <section class="houses" id="housesContainer"></section>
+  <section class="houses" id="housesContainer"></section>
 
-    <!-- Modal -->
-    <div id="houseModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <img id="modalImage" src="" alt="Casa">
-                <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-                <button class="next" onclick="changeImage(1)">&#10095;</button>
-                <div class="modal-info">
-                    <h2 id="modalTitle"></h2>
-                    <p id="modalLocation"></p>
-                    <p id="modalPrice"></p>
-                    <p id="modalRating"></p>
-                    <button id="contactButton">Entrar em Contato</button>
-                </div>
-            </div>
+  <!-- Modal -->
+  <div id="houseModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Casa">
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <button class="next" onclick="changeImage(1)">&#10095;</button>
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <p id="modalLocation"></p>
+          <p id="modalPrice"></p>
+          <p id="modalRating"></p>
+          <button id="contactButton">Entrar em Contato</button>
         </div>
+      </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-</body>
-<footer>
+  <footer>
     Caio Ribeiro - CASAS DE PRAIA ©
-</footer>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

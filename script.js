@@ -1,61 +1,254 @@
-const houses = [
-    { name: "Villa Mar Cumbuco", location: "Cumbuco", price: 1200, rating: "10 (145 avaliações)", images: ["house1.jpg", "house2.jpg", "house3.jpg", "house4.jpg"] },
-    { name: "Resort Beira-Mar", location: "Aquiraz", price: 1800, rating: "9.8 (110 avaliações)", images: ["house2.jpg", "house3.jpg", "house4.jpg", "house1.jpg"] },
-    { name: "Paraíso Morro Branco", location: "Morro Branco", price: 950, rating: "9.5 (98 avaliações)", images: ["house3.jpg", "house4.jpg", "house1.jpg", "house2.jpg"] },
-    { name: "Casa de Luxo", location: "Canoa Quebrada", price: 2300, rating: "10 (80 avaliações)", images: ["house4.jpg", "house1.jpg", "house3.jpg", "house2.jpg"] },
-    { name: "Pousada Jericoacoara", location: "Jericoacoara", price: 850, rating: "9.3 (123 avaliações)", images: ["house1.jpg", "house3.jpg", "house2.jpg", "house4.jpg"] },
-    { name: "Beach House", location: "Flecheiras", price: 1500, rating: "9.7 (120 avaliações)", images: ["house2.jpg", "house4.jpg", "house3.jpg", "house1.jpg"] }
-];
-
-let currentHouse = {};
-let currentIndex = 0;
-
-function renderHouses(filteredHouses = houses) {
-    const container = document.getElementById("housesContainer");
-    container.innerHTML = filteredHouses.map((house, index) => `
-        <div class="house" onclick="openModal(${index})">
-            <img src="${house.images[0]}" alt="${house.name}">
-            <div class="info">
-                <h2>${house.name}</h2>
-                <p><strong>Localização:</strong> ${house.location}</p>
-                <p><strong>Preço:</strong> R$ ${house.price} por diária</p>
-                <p><strong>Avaliação:</strong> ${house.rating}</p>
-            </div>
-        </div>
-    `).join('');
-}
-
-function openModal(index) {
-    currentHouse = houses[index];
-    currentIndex = 0;
-
-    document.getElementById("modalTitle").innerText = currentHouse.name;
-    document.getElementById("modalLocation").innerText = `📍 ${currentHouse.location}`;
-    document.getElementById("modalPrice").innerText = `💰 ${currentHouse.price} por diária`;
-    document.getElementById("modalRating").innerText = `⭐ ${currentHouse.rating}`;
-    document.getElementById("modalImage").src = currentHouse.images[currentIndex];
-
-    document.getElementById("contactButton").onclick = () => contactWhatsApp(currentHouse.name);
-
-    document.getElementById("houseModal").style.display = "block";
-}
-
-function closeModal() {
-    document.getElementById("houseModal").style.display = "none";
-}
-
-function changeImage(direction) {
-    currentIndex = (currentIndex + direction + currentHouse.images.length) % currentHouse.images.length;
-    document.getElementById("modalImage").src = currentHouse.images[currentIndex];
-}
-
-function contactWhatsApp(houseName) {
-    const phoneNumber = "5588997263753";
-    const message = `Olá, gostaria de mais informações sobre a ${houseName}`;
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    renderHouses();
-});
+/* Estilos globais e mobile-first */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  header {
+    background: linear-gradient(to right, #121010, #010143);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .subtitulo {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: rgba(187, 187, 187, 0.755);
+    border-radius: 10px;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
+  .subtitulo p {
+    margin: 5px 0;
+  }
+  
+  .subtitulo strong {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .houses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .house {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .house:hover {
+    transform: translateY(-5px);
+  }
+  
+  .house img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .modal img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+  }
+  
+  .close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 18px;
+    cursor: pointer;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+  }
+  
+  button {
+    background: #ff7b00;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #cc6400;
+  }
+  
+  .info {
+    padding: 18px;
+    text-align: left;
+  }
+  
+  .info h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .info p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .modal-info {
+    background: #f8f8f8;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .modal-info h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-info p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: -5px;
+  }
+  
+  .modal-info button {
+    display: block;
+    margin: 20px auto 1px auto;
+  }
+  
+  .modal-body {
+    position: relative;
+  }
+  
+  .prev, .next {
+    background-color: rgba(255, 123, 0, 0.9);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 8%;
+    margin-top: 10px;
+  }
+  
+  /* Mobile Responsivo */
+  @media (max-width: 600px) {
+    header {
+      font-size: 20px;
+      padding: 10px;
+    }
+    
+    .subtitulo {
+      font-size: 16px;
+      padding: 10px;
+      max-width: 90%;
+      margin: 10px auto;
+    }
+    
+    .houses {
+      padding: 10px;
+      gap: 10px;
+    }
+    
+    .house img {
+      height: 140px;
+    }
+    
+    .info h2 {
+      font-size: 16px;
+    }
+    
+    .info p {
+      font-size: 13px;
+    }
+    
+    .modal-content {
+      width: 95%;
+      max-width: 350px;
+      padding: 10px;
+    }
+    
+    .modal img {
+      height: 200px;
+    }
+    
+    button {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    
+    .prev, .next {
+      padding: 12px;
+      font-size: 18px;
+    }
+    
+    .close {
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
+      padding: 10px;
+    }
+  }
+  
+  footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+  
