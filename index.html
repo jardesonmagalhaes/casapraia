@@ -74,7 +74,8 @@
 
         /* Header & Hero */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/house1.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/house1.jpg') no-repeat center center;
+            background-size: cover;
             height: 100vh;
             color: #fff;
             display: flex;
@@ -335,7 +336,7 @@
                 <h2>Nossa Trilha Sonora</h2>
                 <p>Aperte o play e deixe a música embalar nossas memórias.</p>
                 <audio controls>
-                    <source src="https://cdn.pixabay.com/audio/2022/11/17/audio_88ea2f7b84.mp3" type="audio/mpeg">
+                    <source src="https://cdn.pixabay.com/download/audio/2022/11/17/audio_88ea2f7b84.mp3?filename=romantic-background-music-126441.mp3" type="audio/mpeg">
                     Seu navegador não suporta áudio.
                 </audio>
             </div>
@@ -347,7 +348,7 @@
     </footer>
 
     <script>
-        const startDate = new Date(2022, 7, 27, 0, 0, 0); // 27 de Julho de 2022
+        const startDate = new Date(2022, 7, 27, 0, 0, 0); // 27 de Julho de 2022 (mês começa em 0 = janeiro)
 
         function updateTimer() {
             const now = new Date();
