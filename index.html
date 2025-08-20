@@ -76,7 +76,7 @@
 
         /* Header & Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://source.unsplash.com/1600x900/?couple,love') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542451313-2b2e49346955?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             height: 100vh;
             color: #fff;
             display: flex;
@@ -347,8 +347,8 @@
                     </div>
                     <div class="timeline-item right">
                         <div class="timeline-content">
-                            <h3>Agosto de 2022</h3>
-                            <p>Nosso primeiro encontro, o primeiro de muitos momentos inesquecíveis. A certeza de que algo especial estava acontecendo.</p>
+                            <h3>Primeiro "Eu Te Amo"</h3>
+                            <p>As palavras que mudaram tudo e deram a certeza de que o que sentíamos era real, profundo e recíproco. O coração bateu mais forte.</p>
                         </div>
                     </div>
                     <div class="timeline-item left">
@@ -365,12 +365,12 @@
             <div class="container">
                 <h2>Memórias Fotografadas</h2>
                 <div class="gallery-grid">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,happy" alt="Foto Júlia e Ícaro 1">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,beach" alt="Foto Júlia e Ícaro 2">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,travel" alt="Foto Júlia e Ícaro 3">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,city" alt="Foto Júlia e Ícaro 4">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,nature" alt="Foto Júlia e Ícaro 5">
-                    <img src="https://source.unsplash.com/random/600x600/?couple,smile" alt="Foto Júlia e Ícaro 6">
+                    <img src="https://images.unsplash.com/photo-1502604289416-b873f8f13a2d?q=80&w=1770&auto=format&fit=crop" alt="Foto de Casal 1">
+                    <img src="https://images.unsplash.com/photo-1565437648318-24235f795413?q=80&w=1887&auto=format&fit=crop" alt="Foto de Casal 2">
+                    <img src="https://images.unsplash.com/photo-1515998144265-f63b6b3e64b8?q=80&w=1887&auto=format&fit=crop" alt="Foto de Casal 3">
+                    <img src="https://images.unsplash.com/photo-1529282386701-d64841549645?q=80&w=1887&auto=format&fit=crop" alt="Foto de Casal 4">
+                    <img src="https://images.unsplash.com/photo-1557053503-6c47158b418a?q=80&w=1887&auto=format&fit=crop" alt="Foto de Casal 5">
+                    <img src="https://images.unsplash.com/photo-1525268323635-4a23a8385e28?q=80&w=1887&auto=format&fit=crop" alt="Foto de Casal 6">
                 </div>
             </div>
         </section>
@@ -378,9 +378,9 @@
         <section id="music">
             <div class="container" style="text-align:center;">
                 <h2>Nossa Trilha Sonora</h2>
-                <p>A música que embala nossos melhores momentos.</p>
+                <p>Aperte o play e deixe a música embalar nossas memórias.</p>
                 <audio controls>
-                    <source src="sua-musica.mp3" type="audio/mpeg">
+                    <source src="https://cdn.pixabay.com/audio/2022/11/17/audio_88ea2f7b84.mp3" type="audio/mpeg">
                     Seu navegador não suporta áudio.
                 </audio>
             </div>
@@ -388,34 +388,48 @@
     </main>
 
     <footer>
-        <p>Feito com todo o amor do mundo para Júlia & Ícaro.</p>
+        <p>Feito com todo o amor do mundo para Júlia & Ícaro. ❤️</p>
     </footer>
 
     <script>
         // Data de início do namoro: Ano, Mês (0-11), Dia, Hora, Minuto, Segundo
-        const startDate = new Date(2022, 6, 12, 0, 0, 0); // 12 de Julho de 2022
+        const startDate = new Date(2022, 7, 27, 0, 0, 0); // 27 de Julho de 2022
 
         function updateTimer() {
             const now = new Date();
             const diff = now - startDate;
 
-            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-            let remainder = diff % (1000 * 60 * 60 * 24 * 365.25);
+            // Cálculos precisos para a duração
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            let hours = now.getHours() - startDate.getHours();
+            let minutes = now.getMinutes() - startDate.getMinutes();
+            let seconds = now.getSeconds() - startDate.getSeconds();
+
+            if (seconds < 0) {
+                seconds += 60;
+                minutes--;
+            }
+            if (minutes < 0) {
+                minutes += 60;
+                hours--;
+            }
+            if (hours < 0) {
+                hours += 24;
+                days--;
+            }
+            if (days < 0) {
+                // Pega o último dia do mês anterior
+                const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += lastMonth.getDate();
+                months--;
+            }
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
             
-            const months = Math.floor(remainder / (1000 * 60 * 60 * 24 * 30.44)); // Média de dias no mês
-            remainder %= (1000 * 60 * 60 * 24 * 30.44);
-            
-            const days = Math.floor(remainder / (1000 * 60 * 60 * 24));
-            remainder %= (1000 * 60 * 60 * 24);
-
-            const hours = Math.floor(remainder / (1000 * 60 * 60));
-            remainder %= (1000 * 60 * 60);
-
-            const minutes = Math.floor(remainder / (1000 * 60));
-            remainder %= (1000 * 60);
-
-            const seconds = Math.floor(remainder / 1000);
-
             const timerElement = document.getElementById('timer');
             timerElement.innerHTML = `
                 <div class="time-box">${years}<span>Anos</span></div>
