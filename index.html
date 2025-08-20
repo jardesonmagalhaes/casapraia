@@ -1,313 +1,437 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VALNEI ASSIS - Porcelanataria</title>
-  <style>
-    :root {
-      --primary: #008080;
-      --secondary: #f4f4f4;
-      --accent: #ffd700;
-      --danger: #e74c3c;
-      --success: #27ae60;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--secondary);
-      color: #333;
-    }
-    header {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem 1rem 1rem;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: var(--primary);
-    }
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    form input, form select, form button {
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      min-width: 140px;
-    }
-    form button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    form button:hover {
-      background: var(--accent);
-      color: #333;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      padding: 0.6rem;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-    }
-    tr:nth-child(even) {
-      background: #fafafa;
-    }
-    .status-pendente {
-      color: var(--danger);
-      font-weight: bold;
-    }
-    .status-feito {
-      color: var(--success);
-      font-weight: bold;
-    }
-    .action-btn {
-      background: var(--accent);
-      border: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 0.4rem;
-      font-size: 0.95rem;
-    }
-    .action-btn.feito {
-      background: var(--success);
-      color: #fff;
-    }
-    .action-btn.excluir {
-      background: var(--danger);
-      color: #fff;
-    }
-    #financeiro div {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-    #gastoList {
-      list-style: none;
-      padding: 0;
-    }
-    #gastoList li {
-      background: #eee;
-      margin-bottom: 5px;
-      padding: 0.5rem;
-      border-radius: 3px;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: var(--primary);
-      color: #fff;
-      margin-top: 2rem;
-    }
-    @media (max-width: 700px) {
-      main {
-        max-width: 98vw;
-        padding: 0.5rem;
-      }
-      form {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      table, th, td {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Júlia & Ícaro | Uma História de Amor</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --primary-color: #b08d57; /* Ouro Rosê */
+            --secondary-color: #333;
+            --background-color: #fdfaf6;
+            --text-color: #4a4a4a;
+            --light-gray: #f5f5f5;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* Container & Sections */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+        }
+
+        /* Header & Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://source.unsplash.com/1600x900/?couple,love') no-repeat center center/cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        .hero .since-date {
+            background-color: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: 400;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2.5rem;
+            color: #fff;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+
+        /* Love Counter Section */
+        #counter {
+            background-color: var(--light-gray);
+        }
+
+        .counter-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .counter-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #timer {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .time-box {
+            background-color: var(--light-gray);
+            padding: 10px 20px;
+            border-radius: 5px;
+            min-width: 120px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--text-color);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.left::after {
+            right: -12px;
+        }
+        
+        .timeline-item.right::after {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Photo Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Music & Footer */
+        #music {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+        
+        #music h2, #music h3 {
+            color: #fff;
+        }
+
+        #music h2::after {
+            background-color: #fff;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        footer {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: #f1f1f1;
+        }
+        
+        /* --- Responsive Design --- */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            #timer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+            
+            .timeline-item.left, .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>VALNEI ASSIS</h1>
-    <p>Porcelanataria | Gestão de Serviços</p>
-  </header>
-  <main>
-    <section id="agendamento">
-      <h2>Agendar Serviço</h2>
-      <form id="serviceForm">
-        <input type="text" name="cliente" placeholder="Nome do Cliente" required />
-        <input type="tel" name="telefone" placeholder="Telefone" required />
-        <input type="text" name="servico" placeholder="Serviço" required />
-        <input type="number" name="valor" placeholder="Valor (R$)" required />
-        <input type="date" name="data" required />
-        <select name="status">
-          <option value="pendente">Pendente</option>
-          <option value="feito">Feito</option>
-        </select>
-        <button type="submit">Adicionar</button>
-      </form>
-    </section>
-    <section id="servicos">
-      <h2>Serviços Agendados</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Telefone</th>
-            <th>Serviço</th>
-            <th>Valor</th>
-            <th>Data</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody id="serviceList"></tbody>
-      </table>
-    </section>
-    <section id="financeiro">
-      <h2>Painel Financeiro</h2>
-      <div>
-        <p>Total a Receber: <span id="totalReceber">R$ 0,00</span></p>
-        <p>Total Recebido: <span id="totalRecebido">R$ 0,00</span></p>
-        <p>Gastos: <span id="totalGastos">R$ 0,00</span></p>
-        <p>Saldo: <span id="saldo">R$ 0,00</span></p>
-      </div>
-      <form id="gastoForm">
-        <input type="text" name="descricao" placeholder="Descrição do gasto" required />
-        <input type="number" name="valor" placeholder="Valor (R$)" required />
-        <button type="submit">Registrar Gasto</button>
-      </form>
-      <ul id="gastoList"></ul>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 VALNEI ASSIS - Porcelanataria</p>
-  </footer>
-  <script>
-    // Funções de LocalStorage
-    function getServices() {
-      return JSON.parse(localStorage.getItem('services') || '[]');
-    }
-    function setServices(services) {
-      localStorage.setItem('services', JSON.stringify(services));
-    }
-    function getGastos() {
-      return JSON.parse(localStorage.getItem('gastos') || '[]');
-    }
-    function setGastos(gastos) {
-      localStorage.setItem('gastos', JSON.stringify(gastos));
-    }
-    // Adicionar Serviço
-    document.getElementById('serviceForm').onsubmit = function(e) {
-      e.preventDefault();
-      let form = e.target;
-      let service = {
-        cliente: form.cliente.value,
-        telefone: form.telefone.value,
-        servico: form.servico.value,
-        valor: parseFloat(form.valor.value),
-        data: form.data.value,
-        status: form.status.value
-      };
-      let services = getServices();
-      services.push(service);
-      setServices(services);
-      form.reset();
-      renderServices();
-      updateFinanceiro();
-    };
-    // Renderizar Serviços
-    function renderServices() {
-      let services = getServices();
-      let tbody = document.getElementById('serviceList');
-      tbody.innerHTML = '';
-      services.forEach((s, i) => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${s.cliente}</td>
-          <td>${s.telefone}</td>
-          <td>${s.servico}</td>
-          <td>R$ ${s.valor.toFixed(2)}</td>
-          <td>${s.data}</td>
-          <td class="status-${s.status}">${s.status.charAt(0).toUpperCase() + s.status.slice(1)}</td>
-          <td>
-            <button class="action-btn feito" onclick="marcarFeito(${i})" title="Marcar como Feito">Feito</button>
-            <button class="action-btn excluir" onclick="excluirServico(${i})" title="Excluir">Excluir</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-    // Marcar como Feito
-    window.marcarFeito = function(i) {
-      let services = getServices();
-      services[i].status = 'feito';
-      setServices(services);
-      renderServices();
-      updateFinanceiro();
-    };
-    // Excluir Serviço
-    window.excluirServico = function(i) {
-      let services = getServices();
-      services.splice(i, 1);
-      setServices(services);
-      renderServices();
-      updateFinanceiro();
-    };
-    // Adicionar Gasto
-    document.getElementById('gastoForm').onsubmit = function(e) {
-      e.preventDefault();
-      let form = e.target;
-      let gasto = {
-        descricao: form.descricao.value,
-        valor: parseFloat(form.valor.value)
-      };
-      let gastos = getGastos();
-      gastos.push(gasto);
-      setGastos(gastos);
-      form.reset();
-      renderGastos();
-      updateFinanceiro();
-    };
-    // Renderizar Gastos
-    function renderGastos() {
-      let gastos = getGastos();
-      let ul = document.getElementById('gastoList');
-      ul.innerHTML = '';
-      gastos.forEach((g, i) => {
-        let li = document.createElement('li');
-        li.textContent = `${g.descricao}: R$ ${g.valor.toFixed(2)}`;
-        ul.appendChild(li);
-      });
-    }
-    // Atualizar Painel Financeiro
-    function updateFinanceiro() {
-      let services = getServices();
-      let gastos = getGastos();
-      let totalReceber = services.filter(s => s.status === 'pendente').reduce((acc, s) => acc + s.valor, 0);
-      let totalRecebido = services.filter(s => s.status === 'feito').reduce((acc, s) => acc + s.valor, 0);
-      let totalGastos = gastos.reduce((acc, g) => acc + g.valor, 0);
-      let saldo = totalRecebido - totalGastos;
-      document.getElementById('totalReceber').textContent = 'R$ ' + totalReceber.toFixed(2);
-      document.getElementById('totalRecebido').textContent = 'R$ ' + totalRecebido.toFixed(2);
-      document.getElementById('totalGastos').textContent = 'R$ ' + totalGastos.toFixed(2);
-      document.getElementById('saldo').textContent = 'R$ ' + saldo.toFixed(2);
-    }
-    // Inicialização
-    window.onload = function() {
-      renderServices();
-      renderGastos();
-      updateFinanceiro();
-    };
-  </script>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Júlia & Ícaro</h1>
+            <p>A nossa história, contada em momentos e segundos.</p>
+            <p class="since-date">Desde 12 de Julho de 2022</p>
+        </div>
+        <a href="#counter" class="scroll-down">&#8595;</a>
+    </header>
+
+    <main>
+        <section id="counter">
+            <div class="container">
+                <div class="counter-container">
+                    <h3>Eu te amo há...</h3>
+                    <div id="timer">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="story">
+            <div class="container">
+                <h2>Nossa Linha do Tempo</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>12 de Julho de 2022</h3>
+                            <p>O dia em que tudo começou. Um simples "oi" deu início ao nosso capítulo mais bonito. O começo da nossa jornada.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>Agosto de 2022</h3>
+                            <p>Nosso primeiro encontro, o primeiro de muitos momentos inesquecíveis. A certeza de que algo especial estava acontecendo.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>Hoje</h3>
+                            <p>E aqui estamos, construindo nosso futuro, um dia de cada vez. Cada segundo ao seu lado é um presente. Que venham os próximos capítulos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Memórias Fotografadas</h2>
+                <div class="gallery-grid">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,happy" alt="Foto Júlia e Ícaro 1">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,beach" alt="Foto Júlia e Ícaro 2">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,travel" alt="Foto Júlia e Ícaro 3">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,city" alt="Foto Júlia e Ícaro 4">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,nature" alt="Foto Júlia e Ícaro 5">
+                    <img src="https://source.unsplash.com/random/600x600/?couple,smile" alt="Foto Júlia e Ícaro 6">
+                </div>
+            </div>
+        </section>
+        
+        <section id="music">
+            <div class="container" style="text-align:center;">
+                <h2>Nossa Trilha Sonora</h2>
+                <p>A música que embala nossos melhores momentos.</p>
+                <audio controls>
+                    <source src="sua-musica.mp3" type="audio/mpeg">
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Feito com todo o amor do mundo para Júlia & Ícaro.</p>
+    </footer>
+
+    <script>
+        // Data de início do namoro: Ano, Mês (0-11), Dia, Hora, Minuto, Segundo
+        const startDate = new Date(2022, 6, 12, 0, 0, 0); // 12 de Julho de 2022
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+            let remainder = diff % (1000 * 60 * 60 * 24 * 365.25);
+            
+            const months = Math.floor(remainder / (1000 * 60 * 60 * 24 * 30.44)); // Média de dias no mês
+            remainder %= (1000 * 60 * 60 * 24 * 30.44);
+            
+            const days = Math.floor(remainder / (1000 * 60 * 60 * 24));
+            remainder %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(remainder / (1000 * 60 * 60));
+            remainder %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(remainder / (1000 * 60));
+            remainder %= (1000 * 60);
+
+            const seconds = Math.floor(remainder / 1000);
+
+            const timerElement = document.getElementById('timer');
+            timerElement.innerHTML = `
+                <div class="time-box">${years}<span>Anos</span></div>
+                <div class="time-box">${months}<span>Meses</span></div>
+                <div class="time-box">${days}<span>Dias</span></div>
+                <div class="time-box">${hours}<span>Horas</span></div>
+                <div class="time-box">${minutes}<span>Minutos</span></div>
+                <div class="time-box">${seconds}<span>Segundos</span></div>
+            `;
+        }
+
+        // Atualiza o contador a cada segundo
+        setInterval(updateTimer, 1000);
+        // Inicia o contador assim que a página carrega
+        window.onload = updateTimer;
+    </script>
+
 </body>
 </html>
