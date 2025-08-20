@@ -13,7 +13,7 @@
         :root {
             --primary-color: #b08d57; /* Ouro Rosê */
             --secondary-color: #333;
-            --background-color: #fdfaf6;
+            /* Removida a cor de fundo fixa para usar imagem */
             --text-color: #4a4a4a;
             --light-gray: #f5f5f5;
 
@@ -30,10 +30,28 @@
 
         body {
             font-family: var(--font-body);
-            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.7;
+            position: relative; /* Necessário para o fundo borrado */
+            background-color: #333; /* Cor de fallback caso a imagem não carregue */
         }
+
+        /* ADICIONADO: Fundo com imagem borrada */
+        body::before {
+            content: '';
+            position: fixed; /* Cobre a tela inteira e não rola com a página */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* SUBSTITUA 'sua-imagem-de-fundo.jpg' pelo nome da sua foto */
+            background-image: url('house1.jpg'); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) brightness(0.7); /* Efeito de desfoque e um leve escurecimento */
+            z-index: -1; /* Coloca o fundo atrás de todo o conteúdo */
+        }
+
 
         .container {
             width: 90%;
@@ -43,11 +61,7 @@
 
         section {
             padding: 80px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        section:last-of-type {
-            border-bottom: none;
+            /* Removida a borda para um visual mais limpo com o fundo de imagem */
         }
         
         h1, h2, h3 {
@@ -61,8 +75,9 @@
             font-size: 2.8rem;
             margin-bottom: 40px;
             position: relative;
+            color: #fff; /* Cor do título ajustada para o fundo escuro */
         }
-
+        
         h2::after {
             content: '';
             display: block;
@@ -74,8 +89,7 @@
 
         /* Header & Hero */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/house1.jpg') no-repeat center center;
-            background-size: cover;
+            /* A imagem aqui foi removida, pois agora está no body. Adicionamos altura e mantemos o alinhamento. */
             height: 100vh;
             color: #fff;
             display: flex;
@@ -90,13 +104,14 @@
             font-size: 4.5rem;
             color: #fff;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
 
         .hero p {
             font-size: 1.3rem;
             font-weight: 300;
             margin-top: 10px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
 
         .hero .since-date {
@@ -123,15 +138,12 @@
         }
 
         /* Counter */
-        #counter {
-            background-color: var(--light-gray);
-        }
-
         .counter-container {
-            background: #fff;
+            /* ALTERADO: Fundo semitransparente para legibilidade */
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
         }
         
@@ -176,19 +188,14 @@
             content: '';
             position: absolute;
             width: 4px;
-            background-color: var(--primary-color);
+            background-color: #fff; /* Cor da linha ajustada */
             top: 0;
             bottom: 0;
             left: 50%;
             margin-left: -2px;
         }
 
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-        }
-
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
         .timeline-item.left { left: 0; }
         .timeline-item.right { left: 50%; }
         
@@ -209,9 +216,10 @@
         
         .timeline-content {
             padding: 20px 30px;
-            background-color: white;
+             /* ALTERADO: Fundo semitransparente */
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Gallery */
@@ -236,7 +244,8 @@
         
         /* Music */
         #music {
-            background-color: var(--secondary-color);
+            /* Fundo da seção de música agora é transparente para mostrar a imagem borrada */
+            background-color: transparent;
             color: #fff;
         }
         
@@ -253,16 +262,15 @@
             padding: 20px 0;
             text-align: center;
             font-size: 0.9rem;
-            background-color: #f1f1f1;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo do rodapé semitransparente */
+            color: #fff;
         }
 
         /* Responsive */
         @media screen and (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             h2 { font-size: 2.2rem; }
-            
             #timer { flex-direction: column; align-items: center; }
-
             .timeline::after { left: 20px; }
             .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
             .timeline-item.left, .timeline-item.right { left: 0; }
@@ -336,7 +344,7 @@
                 <h2>Nossa Trilha Sonora</h2>
                 <p>Aperte o play e deixe a música embalar nossas memórias.</p>
                 <audio controls>
-                    <source src="https://cdn.pixabay.com/download/audio/2022/11/17/audio_88ea2f7b84.mp3?filename=romantic-background-music-126441.mp3" type="audio/mpeg">
+                    <source src="musica.mp3" type="audio/mpeg">
                     Seu navegador não suporta áudio.
                 </audio>
             </div>
@@ -348,7 +356,9 @@
     </footer>
 
     <script>
-        const startDate = new Date(2022, 7, 27, 0, 0, 0); // 27 de Julho de 2022 (mês começa em 0 = janeiro)
+        // CORRIGIDO: A data de início para corresponder ao texto (12 de Julho de 2022)
+        // Lembre-se que em JavaScript os meses começam em 0 (Janeiro = 0, Julho = 6)
+        const startDate = new Date(2022, 6, 12, 0, 0, 0); 
 
         function updateTimer() {
             const now = new Date();
